@@ -283,3 +283,20 @@ d3.csv("data/correct_responses_summary.csv").then(function(data) {
         .style("font-size", "12px")
         .attr("alignment-baseline", "middle");
 });
+
+// END OF VISUALIZATION 2
+
+// VISUALIZATION 3
+
+Promise.all([
+    d3.csv("subjects_timed.csv", d => ({ x: +d.time_sec, y: +d.y })),
+    d3.csv("file2.csv", d => ({ x: +d.time_sec, y: +d.y }))
+]).then(([data1, data2]) => {
+    drawGraph(data1, data2);
+})
+
+// END OF VISUALIZATION 3
+
+// VISUALIZATION 4
+
+// END OF VISUALIZATION 4
