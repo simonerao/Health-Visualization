@@ -2,7 +2,7 @@
 
 d3.csv('data/all_subjects_timed.csv').then((data) => {
     drawGraphFour(data);
-})
+});
 
 function drawGraphFour(data) {
     const panelWidth = 400;
