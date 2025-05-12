@@ -99,3 +99,27 @@
 .toggle-switch input {
     margin: 0;
 }
+
+#timeline svg {
+    display: block; 
+    margin: auto; 
+}
+
+.histogram-bar {
+    fill: blue;
+    shape-rendering: crispEdges; 
+}
+
+.histogram-bar:hover {
+    fill: orange;
+}
+
+#timeline .brush .selection {
+    fill: rgba(100, 100, 100, 0.3);
+    stroke: #333;
+}
+
+#timeline .axis-label { 
+    font-size: 12px;
+    text-anchor: middle;
+}
