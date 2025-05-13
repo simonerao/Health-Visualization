@@ -13,17 +13,33 @@
     <h2>Team SEABORN!</h2>
     <h2>Team Members: Nicolas Toon, Sophia Vo, Simone Rao</h2>
 
-    <h3>Chosen Dataset: A Multimodal Dataset for Investigating Working Memory in Presence of Music</h3>
-        <p>Aspects we plan to use:</p>
+<h3 class="question-label">
+  Chosen Dataset:
+  <span class="dataset-text">A Multimodal Dataset for Investigating Working Memory in Presence of Music</span>
+</h3>
+        <!-- <p><em>Aspects we plan to use:</em></p>
         <ul>
             <li>Reaction Time Data</li>
             <li>Session Time Data</li>
             <li>Correct Response Data</li>
             <li>Data grouped by task complexity and/or session</li>
-          </ul>
+          </ul> -->
 
-    <h4>Question: How does the type of background music and task complexity influence the memory of certain letters?</h4>
-
+    <div class="aspects-aligned">
+  <p><em>Aspects we plan to use:</em></p>
+  <ul>
+    <li>Reaction Time Data</li>
+    <li>Session Time Data</li>
+    <li>Correct Response Data</li>
+    <li>Data grouped by task complexity and/or session</li>
+  </ul>
+</div>
+    
+    <h2 class="question-label">Question:</h2>
+    <h3 class="question">
+    How does the type of background music and task complexity influence the memory of certain letters?
+    </h3>
+    
     <div class="viz-container">
         <h2 id="title">Soundtrack to Your Short-Term Memory</h2>
         <h3 id="subtitle">Exploring how background music and task difficulty influence letter recall accuracy in a working memory experiment.</h3>
@@ -38,14 +54,14 @@
         </div>
     </div>
 
-    <h3>Reflection</h3>
+    <h3 class="question-label">Reflection:</h3>
         <p> S. A. G. D. G. H. R. E. O. P. Q. K. L. Now close your eyes and tell me—what was that first letter you saw? Would your answer change if there was music playing? Would it depend on the type of music? These are the questions explored by the experiment behind A Multimodal Dataset for Investigating Working Memory in the Presence of Music. In this study, participants completed a letter-based memory task under two conditions: calming and vexing music, and at two difficulty levels—1-back and 3-back. For example, a subject might be shown the letter "S," followed by a sequence of other letters, and asked to indicate when the original letter reappeared. The hypothesis was that vexing music, by increasing physiological arousal, might actually enhance focus and improve memory performance. To explore this data, we created an interactive heatmap visualization using D3.js, allowing users to compare letter recall accuracy across music types and difficulty levels. Our goal was to make the cognitive effects of music both accessible and visually intuitive.
             <br></br>
-            For our visualization we chose to represent the data using a keyboard heatmap metaphor, mapping error rates to a letter position using a color gradient. We decided to visually encode letter error frequency using a diverging red gradient, where deeper reds indicate higher error rates, so the visualization can be intuitively interpreted by the audience as red is often associated with error or warning, thus, making high-error letters immediately stand out. Additionally, for the layout of the keyboard we originally used a standard QWERTY keyboard but thought this would confuse the audience as the experiment did not include any typing. Thus, we decided to reorder the keyboard alphabetically to enhance findability and visual clarity. We included a color legend underneath the heatmap in order to clarify the interpretation of the colors and maintain consistency in color mapping. Further, we decided to implement a toggle switch between 1-back and 3-back tasks rather than including four separate heatmaps to avoid over-loading the chart with too much information and preserve direct comparison between the calming and vexing music settings. We did consider the alternative of showing all four condition heatmaps at once but decided that this was overwhelming. By using a toggle, we retain the ability to compare all conditions while reducing clutter. We also decided to implement a tooltips on hover to show the exact error percentage per letter, thus, providing the viewer with more information. This allowed us to keep our design clean while still enabling users to see the precise values for each letter. 
+            For our visualization we chose to represent the data using a keyboard heatmap metaphor, mapping error rates to a letter position using a color gradient. We decided to visually encode letter error frequency using a diverging red gradient, where deeper reds indicate higher error rates, so the visualization can be intuitively interpreted by the audience as red is often associated with error or warning, thus, making high-error letters immediately stand out. Additionally, for the layout of the keyboard we originally used a standard QWERTY keyboard but thought this would confuse the audience as the experiment did not include any typing. Thus, we decided to reorder the keyboard alphabetically to enhance findability and visual clarity. We included a color legend underneath the heatmap in order to clarify the interpretation of the colors and maintain consistency in color mapping. Further, we decided to implement a toggle switch between 1-back and 3-back tasks rather than including four separate heatmaps to avoid over-loading the chart with too much information and preserve direct comparison between the calming and vexing music settings. We did consider the alternative of showing all four condition heatmaps at once but decided that this was overwhelming. By using a toggle, we retain the ability to compare all conditions while reducing clutter. We also decided to implement a tooltips on hover to show the exact error percentage per letter, thus, providing the viewer with more information. This allowed us to keep our design clean while still enabling users to see the precise values for each letter. Finally, we added a trial histogram that visualizes the distribution of data points across all trial numbers in the experiment. Users can click and drag (brush) horizontally on this timeline to select a specific range of trials, dynamically filtering the heatmap visualizations above to show data only from the selected trials. This allows users to investigate how performance or error patterns change over time during the experiment.
             <br></br>
-            At the start of the project, each of the three team members independently developed two interactive D3 visualizations to explore different design directions. Individually creating visualizations as part of the development process, not only helped us become more familiar with the dataset, but also allowed us to explore a wider variety of visualization approaches, which proved valuable when we collaboratively selected and refined our final design. We chose to build on a visualization originally prototyped by Nick, which we then expanded on as a team. Nick led the implementation of the final visualization, while Simone created and formatted the website and wrote the project description. Sophia added complex interactivity with a brush feature. All members contributed ideas to improve the original visualization, including reordering the keyboard layout to be alphabetical, adding tooltips to show error percentages on hover, and implementing a toggle to switch between the 1-back and 3-back conditions with two keyboards instead of four. We collectively decided on the dataset and individually pre-processed the data to support our designs during the original brainstorming process—this step was the most time-consuming due to the dataset's size and complexity, with files spread across many folders. In total, we spent approximately 24 people-hours brainstorming, prototyping, refining the visualization, coding, and preparing the final writeup. The collaborative process allowed us to balance responsibilities and contribute equally across both technical and design tasks.
+            At the start of the project, each of the three team members independently developed two interactive D3 visualizations to explore different design directions. Individually creating visualizations as part of the development process, not only helped us become more familiar with the dataset, but also allowed us to explore a wider variety of visualization approaches, which proved valuable when we collaboratively selected and refined our final design. We chose to build on a visualization originally prototyped by Nick, which we then expanded on as a team. Nick led the implementation of the final visualization, while Simone created and formatted the website and wrote the project description. Sophia added complex interactivity with a brush feature and styled the webpage. All members contributed ideas to improve the original visualization, including reordering the keyboard layout to be alphabetical, adding tooltips to show error percentages on hover, and implementing a toggle to switch between the 1-back and 3-back conditions with two keyboards instead of four. We collectively decided on the dataset and individually pre-processed the data to support our designs during the original brainstorming process—this step was the most time-consuming due to the dataset's size and complexity, with files spread across many folders. In total, we spent approximately 24 people-hours brainstorming, prototyping, refining the visualization, coding, and preparing the final writeup. The collaborative process allowed us to balance responsibilities and contribute equally across both technical and design tasks.
             <br></br>
-            So, after all of this information are you still with me? Then you’re ready for the final challenge: can you tell me again—what was that original letter?
+            So, after all of this information are you still with me? Then you're ready for the final challenge: can you tell me again—what was that original letter?
         </p>
 
 </body>
