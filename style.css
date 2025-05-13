@@ -249,3 +249,9 @@ ul {
     font-size: 14px;
     text-anchor: middle;
 }
+
+
+.axis-note {
+  font-size: 11px;
+  font-style: italic;
+}
