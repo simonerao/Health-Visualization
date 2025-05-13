@@ -193,6 +193,10 @@ function drawGraphFour(initialFullData) {
         .attr("width", svgWidth)
         .attr("height", svgHeight);
 
+    // const vizSvg = d3.select("#viz").append("svg")
+    //    .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+    //    .attr("preserveAspectRatio", "xMidYMid meet");
+
     const keyboardRows = [
         { keys: "ABCDEFGHI".split(""), y: 0 },
         { keys: "JKLMNOPQR".split(""), y: 1 },
@@ -306,6 +310,15 @@ function drawGraphFour(initialFullData) {
 
                 const boxWidth = legendWidth / color.range().length;
 
+                legend.append("text")
+                    .attr("class", "legend-caption")
+                    .attr("x", legendWidth - 27)      
+                    .attr("y", -4)                   
+                    .attr("text-anchor", "middle")   
+                    .attr("font-size", "12px")
+                    .attr("font-style", "italic")
+                    .text("Error rate");
+
                 legend.selectAll("rect.legend-box")
                     .data(color.range())
                     .enter()
@@ -351,8 +364,8 @@ function drawGraphFour(initialFullData) {
             renderVisualization(currentTaskType, currentFilteredData); 
         });
 
-    const timelineMargin = { top: 20, right: 30, bottom: 40, left: 50 }; 
-    const timelineHeight = 150; 
+    const timelineMargin = { top: 10, right: 30, bottom: 40, left: 50 }; 
+    const timelineHeight = 80; 
     const timelineInnerWidth = svgWidth - timelineMargin.left - timelineMargin.right;
     const timelineInnerHeight = timelineHeight - timelineMargin.top - timelineMargin.bottom;
 
@@ -361,6 +374,12 @@ function drawGraphFour(initialFullData) {
         .attr("height", timelineHeight)
       .append("g")
         .attr("transform", `translate(${timelineMargin.left},${timelineMargin.top})`);
+    
+    // const timelineSvg = d3.select("#timeline").append("svg")
+    //    .attr("viewBox", `0 0 ${svgWidth} ${timelineHeight}`)
+    //    .attr("preserveAspectRatio", "xMidYMid meet")
+    //  .append("g")
+    //    .attr("transform", `translate(${timelineMargin.left},${timelineMargin.top})`);
 
     const [minTN, maxTN] = d3.extent(initialFullData, d => d.TrialNumber);
     const xTrial = d3.scaleLinear()
@@ -403,19 +422,20 @@ function drawGraphFour(initialFullData) {
 
     timelineSvg.append("g")
         .attr("class", "y-axis")
-        .call(d3.axisLeft(yCount).ticks(5).tickFormat(d3.format('d'))); 
+        // .call(d3.axisLeft(yCount).ticks(1).tickFormat(d3.format('d'))); 
+        .call(d3.axisLeft(yCount).tickValues([0, 180]).tickFormat(d3.format('d')));
 
      timelineSvg.append("text")
         .attr("class", "axis-label")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - timelineMargin.left + 15)
         .attr("x", 0 - (timelineInnerHeight / 2))
-        .text("Count of Data Points");
+        .text("# Data");
 
 
     const brush = d3.brushX()
         .extent([[0, 0], [timelineInnerWidth, timelineInnerHeight]])
-        .on("end", brushed); // trigger update only when dragging finishes -> maybe change to 'brush' for real-time update
+        .on("brush", brushed); // trigger update only when dragging finishes -> maybe change to 'brush' for real-time update
 
     const brushG = timelineSvg.append("g")
         .attr("class", "brush")
