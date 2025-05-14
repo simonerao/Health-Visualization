@@ -229,7 +229,7 @@ ul {
     stroke: black;
     stroke-opacity: 0.7;
     stroke-dasharray: 5 3;
-    animation: marching-ants 2s linear infinite;
+    animation: marching-ants 1s linear infinite;
 }
 
 #timeline .brush .handle {
