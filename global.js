@@ -62,7 +62,10 @@ function drawGraphFour(initialFullData) {
             const panel = vizSvg.append("g")
                 .attr("transform", `translate(${col * panelWidth + 50}, ${row * panelHeight + 40})`);
             
+            const category_responses = dataToRender.filter(d => d.n_back === category);
             const filtered_mistakes = dataToRender.filter(d => d.Response !== d.Correct_Response && d.n_back === category);
+            let overall_error_p = (filtered_mistakes.length / category_responses.length * 100).toFixed(2);
+            overall_error_p = overall_error_p === 'NaN' ? '-.--' : overall_error_p;
 
             const mistakes = d3.rollup(
                 filtered_mistakes,
@@ -80,10 +83,7 @@ function drawGraphFour(initialFullData) {
                 };
             });
             
-            
-            const maxPercent = d3.max(heatData, d => d.percent);
             color = d3.scaleThreshold()
-                
                 .domain([3, 6, 9, 12]) 
                 .range(d3.schemeReds[5]);
             
@@ -170,13 +170,25 @@ function drawGraphFour(initialFullData) {
                     .text(d_text => `${d_text.toFixed(0)}%`); 
             }       
             
-            panel.append("text")
+            const text = panel.append("text")
                 .attr("x", panelWidth / 2 - 25) 
                 .attr("text-anchor", "middle")
-                .attr("y", -15)
-                .text(category.toUpperCase())
+                .attr("y", -25)
                 .attr("font-size", "16px")
                 .attr("font-weight", "bold");
+
+            text.append("tspan")
+                .attr("x", panelWidth / 2 - 25)
+                .attr("dy", "0em")
+                .text(category.toUpperCase());
+
+            text.append("tspan")
+                .attr("x", panelWidth / 2 - 25)
+                .attr("dy", "1.5em")
+                .style("font-size", "11px")
+                .style('font-weight', 'normal')
+                .style("font-style", "italic")
+                .text(`Overall Error Rate: ${overall_error_p}%`);
         });
     }
 
