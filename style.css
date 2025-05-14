@@ -196,7 +196,7 @@ ul {
 }
 
 .toggle-switch input:checked+.slider {
-    background-color: lightcoral;
+    background-color: darkred;
 }
 
 .toggle-switch input:checked+.slider::before {
@@ -249,7 +249,6 @@ ul {
     font-size: 14px;
     text-anchor: middle;
 }
-
 
 .axis-note {
   font-size: 11px;
